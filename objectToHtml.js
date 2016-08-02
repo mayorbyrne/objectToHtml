@@ -1,4 +1,8 @@
 window.O2H = {
+  listItem: '<li>',
+  strong: function strong (text) {
+    return '<strong>' + text + '</strong>';
+  },
   getHtmlFromArray: function getHtmlFromArray (arr) {
     var self = this;
 
@@ -13,15 +17,13 @@ window.O2H = {
             return self.getHtmlFromArray(item);
           }
           else if (item) {
-            return '<li> {' + self.getHtmlFromObject(item) + '}';
+            return self.listItem + '{' + self.getHtmlFromObject(item) + '}';
           }
           else {
-            return '<li>null';
+            return self.listItem + 'null';
           }
         }
-        else {
-          return '<li>' + item;
-        }
+        return self.listItem + item;
       }).join('');
     }
     text += '</ul>';
@@ -44,29 +46,29 @@ window.O2H = {
           if (obj[k]) {
             if (Array.isArray(obj[k])) {
               if (!obj[k].length) {
-                text += '<li><strong>' + k + '</strong>' + ': []';
+                text += self.listItem + self.strong(k) + ': []';
               }
               else {
-                text += '<li><strong>' + k + '</strong>: [' + self.getHtmlFromArray(obj[k]) + ']';
+                text += self.listItem + self.strong(k) + ': [' + self.getHtmlFromArray(obj[k]) + ']';
               }
             }
             else if (Object.keys(obj[k]).length === 0) {
-              text += '<li><strong>' + k + '</strong>' + ': {}';
+              text += self.listItem + self.strong(k) + ': {}';
             }
             else {
-              text += '<li><strong>' + k + '</strong>: {' + self.getHtmlFromObject(obj[k])
+              text += self.listItem + self.strong(k) + ': {' + self.getHtmlFromObject(obj[k])
                 + '}';
             }
           }
           else {
-            text += '<li><strong>' + k + '</strong>: null';
+            text += self.listItem + self.strong(k) + ': null';
           }
           break;
         case 'undefined':
-          text += '<li><strong>' + k + '</strong>: undefined';
+          text += self.listItem + self.strong(k) + ': undefined';
           break;
         default:
-          text += '<li><strong>' + k +'</strong>: ' + obj[k] + '<br>'
+          text += self.listItem + self.strong(k) + ': ' + obj[k] + '<br>'
           break;
       };
     });
