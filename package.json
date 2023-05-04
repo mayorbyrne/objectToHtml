@@ -1,0 +1,26 @@
+{
+  "name": "objecttohtml",
+  "type":"module",
+  "version": "1.0.0",
+  "description": "Take a javascript object and convert it to a basic HTML tree (unordered-list)",
+  "main": "app.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayorbyrne/objectToHtml.git"
+  },
+  "author": "Kevin Moritz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayorbyrne/objectToHtml/issues"
+  },
+  "homepage": "https://github.com/mayorbyrne/objectToHtml#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
+}
